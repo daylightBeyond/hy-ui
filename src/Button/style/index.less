@@ -1,0 +1,81 @@
+@import '../../styles/common.less';
+
+.hy-btn {
+  // 定位属性
+  display: inline-block;
+  // 自身属性
+  outline: none;
+  height: 32px;
+  line-height: 32px;
+  border: 1px solid transparent;
+  background-color: #fff;
+  cursor: pointer;
+
+  // 文字属性
+  color: @hy-default-color;
+  font-size: @hy-font-md;
+  font-weight: @hy-font-weight-normal;
+  // 文本属性
+  text-align: center;
+  white-space: nowrap;
+  // CSS3 新增属性
+  border-radius: @hy-border-radius-xs;
+
+  // Button的 第一个span子元素
+  > span {
+    display: inline-block;
+  }
+
+  // 类名不包括 disable loading 的鼠标hover时的样式
+  &:not(.disabled .loading):hover {
+    color: @hy-primary-color;
+    border-color: @hy-primary-border-color;
+  }
+
+  &-default {
+    background-color: @hy-default-background-color;
+    border-color: @hy-default-border-color;
+    box-shadow: @hy-btn-default-box-shadow;
+  }
+
+  &-primary {
+    color: #fff;
+    background-color: @hy-primary-background-color;
+    box-shadow: @hy-btn-primary-box-shadow;
+  }
+  &-primary:not(.disabled .loading):hover {
+    color: #fff;
+    background-color: @hy-primary-hover-color;
+  }
+
+  &-danger {
+    color: @hy-danger-color;
+    border-color: @hy-danger-color;
+  }
+  &-danger:not(.disabled .loading):hover {
+    color: @hy-danger-border-color;
+    border-color: @hy-danger-border-color;
+  }
+
+  &-dashed {
+    border-style: dashed;
+    border-color: @hy-dashed-border-color;
+  }
+
+  &-text {
+    color: @hy-default-color;
+  }
+  &-text:not(.disabled .loading):hover {
+    color: @hy-default-color;
+    border-color: transparent;
+    background-color: @hy-text-hover-background-color;
+  }
+
+  &-link {
+    color: @hy-primary-color;
+  }
+  &-link:not(.disabled .loading):hover {
+    color: @hy-link-hover-color;
+    border-color: transparent;
+  }
+}
