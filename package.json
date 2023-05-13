@@ -2,28 +2,35 @@
   "name": "hy-ui",
   "version": "0.0.1",
   "description": "this is single ui-library",
+  "license": "MIT",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "start": "npm run dev",
-    "dev": "dumi dev",
     "build": "father build",
+    "build:dist": "rimraf docs-dist && dumi build",
+    "build:types": "tsc -p tsconfig.build.json && cpr lib esm",
     "build:watch": "father dev",
+    "commit": "git-cz",
+    "depoly:dist": "npm run build:dist && gh-pages -d docs-dist",
+    "dev": "dumi dev",
     "docs:build": "dumi build",
-    "prepare": "husky install && dumi setup",
     "doctor": "father doctor",
     "lint": "npm run lint:es && npm run lint:css",
     "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
-    "prepublishOnly": "father doctor && npm run build"
+    "prepare": "husky install && dumi setup",
+    "prepublishOnly": "father doctor && npm run build",
+    "start": "npm run dev"
   },
-  "authors": [
-    "daylightBeyond"
-  ],
-  "license": "MIT",
-  "files": [
-    "dist"
-  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -35,33 +42,49 @@
     ],
     "*.{css,less}": [
       "stylelint --fix",
-      "prettier --write"
+      "prettier --write",
+      "git add"
     ],
     "*.{js,jsx}": [
       "eslint --fix",
-      "prettier --write"
+      "prettier --write",
+      "git add"
     ],
     "*.{ts,tsx}": [
       "eslint --fix",
-      "prettier --parser=typescript --write"
+      "prettier --parser=typescript --write",
+      "git add"
     ]
   },
-  "publishConfig": {
-    "access": "public"
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
-  "peerDependencies": {
-    "react": ">=16.9.0",
-    "react-dom": ">=16.9.0"
+  "dependencies": {
+    "classnames": "^2.3.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-transform-runtime": "^7.21.4",
+    "@babel/preset-env": "^7.21.5",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.21.5",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.5",
     "@umijs/lint": "^4.0.0",
+    "babel-eslint": "^10.1.0",
+    "commitizen": "^4.3.0",
+    "cpr": "^3.0.1",
+    "cz-conventional-changelog": "^3.3.0",
     "dumi": "^2.0.2",
     "eslint": "^8.23.0",
     "father": "^4.1.0",
+    "gh-pages": "^5.0.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
@@ -69,9 +92,17 @@
     "prettier-plugin-packagejson": "^2.2.18",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "rimraf": "^5.0.0",
     "stylelint": "^14.9.1"
   },
-  "dependencies": {
-    "classnames": "^2.3.2"
-  }
+  "peerDependencies": {
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "authors": [
+    "daylightBeyond"
+  ]
 }

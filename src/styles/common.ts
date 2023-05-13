@@ -7,13 +7,13 @@ const commonStyle = {
 
   // 字体粗细
   hyFontWeightThin: 100,
-  hyFontWeightExtralight: 200,
+  hyFontWeightExtraLight: 200,
   hyFontWeightLight: 300,
   hyFontWeightNormal: 400,
   hyFontWeightMedium: 500,
-  hyFontWeightSemibold: 600,
+  hyFontWeightSemiBold: 600,
   hyFontWeightBold: 700,
-  hyFontWeightExtrabold: 800,
+  hyFontWeightExtraBold: 800,
   hyFontWeightBlack: 900,
 
   // 颜色 color
@@ -26,7 +26,7 @@ const commonStyle = {
 
   // 深色主题
 
-  // 圆角 border-raduis
+  // 圆角 border-radius
   hyBorderRadiusXs: '5px',
   hyBorderRadiusSm: '10px',
   hyBorderRadiusMd: '20px',
@@ -35,4 +35,4 @@ const commonStyle = {
   // 边距
 };
 
-export default commonStyle; 
+export default commonStyle;
