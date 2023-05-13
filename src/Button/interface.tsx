@@ -1,32 +1,32 @@
-import React, { ReactNode, CSSProperties } from 'react';
+import { CSSProperties, MouseEventHandler, ReactNode } from 'react';
 
-export interface ButtonProps {
-  className?: string,
-  style?: CSSProperties,
-  children?: ReactNode,
+interface ButtonProps {
+  className?: string;
+  style?: CSSProperties;
+  children?: ReactNode;
   /**
    * @description 按钮整体
    * @default primary
    */
-  type?: 'default' | 'primary' | 'danger' | 'dashed' | 'link' | 'text',
+  type?: 'default' | 'primary' | 'danger' | 'dashed' | 'link' | 'text';
   // 按钮图标
-  icon?: ReactNode,
+  icon?: ReactNode;
   /**
    * @description 按钮形状
    * @default default
    */
-  shape?: 'default' | 'circle' | 'round',
+  shape?: 'default' | 'circle' | 'round';
   /**
    * @description 按钮大小
    * @default middle
    */
-  size?: 'large' | 'middle' | 'small',
+  size?: 'large' | 'middle' | 'small';
   /**
    * @description 禁用状态
    * @default false
    */
-  disabled?: boolean,
-  onClick?: Function
+  disabled?: boolean;
+  onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
-// export type { ButtonProps };
+export type { ButtonProps };
